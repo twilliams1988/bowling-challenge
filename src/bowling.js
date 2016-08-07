@@ -8,10 +8,11 @@ Bowling.prototype = {
   totalScore: function() {
     return arraySum(this.game)
   },
-  ballScore: function(ball) {
-    this.frame.push(ball);
-    if(ball === 10) {
+  ballScore: function(pins) {
+    this.frame.push(pins);
+    if(pins === 10) {
       this.game.push(this.frame);
+      this.strikeCalc();
       this.frame = [];
     } else if(this.frame.length === 1 &&
       this.game.length >= 1) {
@@ -36,7 +37,23 @@ Bowling.prototype = {
        this.game.slice(-2)[0].length === 2) {
       this.game.slice(-2)[0].push(this.frame[0]);
     }
-  }
+  },
+  // finalFrame: function(pins) {
+  //   this.frame.push(pins);
+  //   if(pins === 10 && this.frame.length === 3) {
+  //     this.game.push(this.frame);
+  //     return 'Game Over';
+  //   } else if(this.frame.reduce(add, 0) === 10){
+  //     this.frame.push(pins);
+  //     this.game.push(this.frame);
+  //     return 'Game Over';
+  //   } else if(this.frame.length === 1){
+  //     this.frame.push(pins);
+  //   }  else {
+  //     this.game.push(this.frame);
+  //     return 'Game Over';
+  //   }
+  // }
 };
 
 function add(a, b) {

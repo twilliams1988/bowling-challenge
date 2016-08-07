@@ -38,5 +38,11 @@ it('adds the next one ball to a spare score', function() {
   bowling.ballScore(1);
   expect(bowling.totalScore()).toEqual(13);
 });
+it('returns true if game is over', function() {
+  bowling.game = [[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1]]
+  bowling.ballScore(1)
+  bowling.ballScore(1)
+  expect(bowling.isGameOver()).toEqual(true);
+});
 
 });
