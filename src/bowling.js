@@ -13,7 +13,11 @@ Bowling.prototype = {
     if(ball === 10) {
       this.game.push(this.frame);
       this.frame = [];
-    } else if(this.frame.length === 2) {
+    } else if(this.frame.length === 1 &&
+      this.game.length >= 1) {
+      this.spareCalc();
+    }
+    if(this.frame.length === 2) {
       this.game.push(this.frame);
       this.strikeCalc();
       this.frame = [];
@@ -26,6 +30,12 @@ Bowling.prototype = {
     if(this.game.slice(-2)[0][0] === 10) {
       this.game.slice(-2)[0].push(this.frame.reduce(add, 0));
     }
+  },
+  spareCalc: function() {
+    if(this.game.slice(-2)[0].reduce(add, 0) === 10 &&
+       this.game.slice(-2)[0].length === 2) {
+      this.game.slice(-2)[0].push(this.frame[0]);
+    }
   }
 };
 
@@ -35,7 +45,7 @@ function add(a, b) {
 function arraySum(i) {
     var sum=0; // missing var added
     for(var a=0;a<i.length;a++){ // missing var added
-        if(typeof i[a]=="number"){
+        if(typeof i[a]==="number"){
             sum+=i[a];
         }else if(i[a] instanceof Array){
             sum+=arraySum(i[a]);
@@ -43,6 +53,3 @@ function arraySum(i) {
     }
     return sum;
 }
-// strikeCalc: function() {
-//     return this.game.slice(-2)[0][0] += this.game.slice(-1)[0].reduce(add, 0);
-// },

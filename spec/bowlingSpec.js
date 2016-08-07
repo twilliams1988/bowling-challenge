@@ -31,5 +31,12 @@ it('adds the next two balls to a strike score', function() {
   bowling.ballScore(1);
   expect(bowling.totalScore()).toEqual(14);
 });
+it('adds the next one ball to a spare score', function() {
+  bowling.ballScore(5);
+  bowling.ballScore(5);
+  bowling.ballScore(1);
+  bowling.ballScore(1);
+  expect(bowling.totalScore()).toEqual(13);
+});
 
 });
