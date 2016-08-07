@@ -6,7 +6,7 @@ beforeEach(function() {
 });
 
 it('starts the score at 0', function() {
-  expect(bowling.totalScore).toEqual(0);
+  expect(bowling.totalScore()).toEqual(0);
 });
 
 it('adds the users balls to an array', function() {
@@ -29,7 +29,7 @@ it('adds the next two balls to a strike score', function() {
   bowling.ballScore(10);
   bowling.ballScore(1);
   bowling.ballScore(1);
-  expect(bowling.totalScore).toEqual(12);
+  expect(bowling.totalScore()).toEqual(14);
 });
 
 });
